@@ -153,6 +153,21 @@ h2 { font-family: var(--display); font-weight: 400; font-size: clamp(32px, 3.4vw
 .fastbook:hover { background: var(--silver); }
 .fastbook svg { width: 30px; height: 30px; flex: none; }
 
+/* Reseñas de Google: oculta hasta que llegan las reseñas. */
+#resenas[hidden] { display: none; }
+.reviews { display: grid; gap: 28px; max-width: 36em; }
+.score { display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px 14px; }
+.score strong { font-family: var(--display); font-weight: 400; font-size: 44px; line-height: 1; }
+.stars { color: var(--silver); letter-spacing: .12em; font-size: 17px; }
+.score .count { color: var(--muted); font-size: 16px; }
+.review { padding-bottom: 24px; border-bottom: 1px solid var(--line); }
+.review blockquote { font-family: var(--display); font-size: 22px; line-height: 1.4; margin: 8px 0 12px; }
+.review .who { color: var(--muted); font-size: 15px; }
+.review .who a { text-decoration: none; }
+.review .who a:hover { text-decoration: underline; }
+.review .more { background: none; border: 0; padding: 0; font: inherit; font-size: 15px; color: var(--silver); text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }
+.from-google { color: var(--muted); font-size: 15px; display: flex; flex-wrap: wrap; gap: 8px 24px; }
+
 .closing { background: var(--panel); }
 .closing .visit p { margin: 0; }
 
@@ -298,6 +313,18 @@ footer {
     </div>
   </section>
 
+  <section class="band" id="resenas" hidden>
+    <h2><span lang="en">Reviews</span><span lang="de">Bewertungen</span><span lang="it">Recensioni</span><span lang="es">Reseñas</span></h2>
+    <div class="reviews">
+      <div class="score" aria-live="polite"><strong id="rv-rating"></strong><span class="stars" id="rv-stars" aria-hidden="true"></span><span class="count" id="rv-count"></span></div>
+      <div id="rv-list"></div>
+      <div class="from-google">
+        <a id="rv-all" href="https://www.google.com/maps/place/?q=place_id:ChIJ8-3AyPcJkEcRkX2V63I98oM"><span lang="en">All reviews on Google</span><span lang="de">Alle Bewertungen auf Google</span><span lang="it">Tutte le recensioni su Google</span><span lang="es">Todas las reseñas en Google</span></a>
+        <a href="https://search.google.com/local/writereview?placeid=ChIJ8-3AyPcJkEcRkX2V63I98oM"><span lang="en">Write a review</span><span lang="de">Bewertung schreiben</span><span lang="it">Scrivi una recensione</span><span lang="es">Escribir una reseña</span></a>
+      </div>
+    </div>
+  </section>
+
   <section class="band" id="zeiten">
     <h2><span lang="en">Opening hours</span><span lang="de">Öffnungszeiten</span><span lang="it">Orari di apertura</span><span lang="es">Horario</span></h2>
     <div class="list">
@@ -337,7 +364,7 @@ footer {
     <details id="privacy">
       <summary><span lang="en">Privacy</span><span lang="de">Datenschutz</span><span lang="it">Privacy</span><span lang="es">Privacidad</span></summary>
       <p><span lang="en">This website collects no data through forms and sets no advertising or analytics cookies. It only stores a small note in your browser, for the current visit, so the intro is not shown twice.</span><span lang="de">Diese Website erhebt keine Daten über Formulare und setzt keine Werbe- oder Analyse-Cookies. Sie speichert nur für den aktuellen Besuch einen kleinen Vermerk in Ihrem Browser, damit das Intro nicht zweimal erscheint.</span><span lang="it">Questo sito non raccoglie dati tramite moduli e non utilizza cookie pubblicitari o analitici. Salva solo una piccola nota nel browser, per la visita in corso, così l’introduzione non appare due volte.</span><span lang="es">Esta web no recoge datos mediante formularios ni usa cookies publicitarias o de análisis. Solo guarda una pequeña nota en tu navegador, durante la visita, para que la introducción no se repita.</span></p>
-      <p><span lang="en">When you visit the site, the hosting provider processes technical data such as your IP address so the page can be delivered. Fonts are loaded from Google, which receives your IP address for that purpose.</span><span lang="de">Beim Besuch der Website verarbeitet der Hosting-Anbieter technische Daten wie Ihre IP-Adresse, um die Seite bereitzustellen. Schriften werden von Google geladen, das dafür Ihre IP-Adresse erhält.</span><span lang="it">Quando visiti il sito, il fornitore di hosting tratta dati tecnici come l’indirizzo IP per mostrare la pagina. I caratteri vengono caricati da Google, che a tale scopo riceve il tuo indirizzo IP.</span><span lang="es">Al visitar la web, el proveedor de alojamiento trata datos técnicos como tu dirección IP para mostrar la página. Las fuentes se cargan desde Google, que recibe tu dirección IP para ello.</span></p>
+      <p><span lang="en">When you visit the site, the hosting provider processes technical data such as your IP address so the page can be delivered. Fonts and Google reviews are loaded from Google, which receives your IP address for that purpose.</span><span lang="de">Beim Besuch der Website verarbeitet der Hosting-Anbieter technische Daten wie Ihre IP-Adresse, um die Seite bereitzustellen. Schriften und Google-Bewertungen werden von Google geladen, das dafür Ihre IP-Adresse erhält.</span><span lang="it">Quando visiti il sito, il fornitore di hosting tratta dati tecnici come l’indirizzo IP per mostrare la pagina. I caratteri e le recensioni Google vengono caricati da Google, che a tale scopo riceve il tuo indirizzo IP.</span><span lang="es">Al visitar la web, el proveedor de alojamiento trata datos técnicos como tu dirección IP para mostrar la página. Las fuentes y las reseñas de Google se cargan desde Google, que recibe tu dirección IP para ello.</span></p>
       <p><span lang="en">If you contact me or book through WhatsApp, Fresha, Instagram or Google Maps, those services process your data under their own privacy policies. I use the details you give me only to manage your appointment.</span><span lang="de">Wenn Sie mich über WhatsApp, Fresha, Instagram oder Google Maps kontaktieren oder dort buchen, verarbeiten diese Dienste Ihre Daten nach ihren eigenen Datenschutzbestimmungen. Ihre Angaben verwende ich nur zur Verwaltung Ihres Termins.</span><span lang="it">Se mi contatti o prenoti tramite WhatsApp, Fresha, Instagram o Google Maps, questi servizi trattano i tuoi dati secondo le proprie informative. Uso i dati che mi fornisci solo per gestire il tuo appuntamento.</span><span lang="es">Si me contactas o reservas por WhatsApp, Fresha, Instagram o Google Maps, esos servicios tratan tus datos según sus propias políticas. Uso los datos que me das solo para gestionar tu cita.</span></p>
       <p><span lang="en">You can ask for access to, correction of or deletion of your data at rsvip.barber@gmail.com.</span><span lang="de">Auskunft, Berichtigung oder Löschung Ihrer Daten können Sie unter rsvip.barber@gmail.com verlangen.</span><span lang="it">Puoi chiedere l’accesso, la rettifica o la cancellazione dei tuoi dati a rsvip.barber@gmail.com.</span><span lang="es">Puedes pedir el acceso, la rectificación o la eliminación de tus datos en rsvip.barber@gmail.com.</span></p>
     </details>
@@ -412,11 +439,115 @@ footer {
       document.documentElement.dataset.lang = lang;
       document.documentElement.lang = lang;
       setWhatsApp(lang);
+      if (reviewsStarted) loadReviews(lang);
       document.querySelectorAll(".switch button").forEach(function (x) {
         x.setAttribute("aria-pressed", String(x === b));
       });
     });
   });
+
+  // RESEÑAS DE GOOGLE: pegar aquí la clave de Google Maps (API key).
+  // Sin clave, la sección de reseñas no aparece.
+  var GOOGLE_API_KEY = "";
+  var GOOGLE_PLACE_ID = "ChIJ8-3AyPcJkEcRkX2V63I98oM"; // Ficha de Google de RS VIP Barber
+
+  var RV_TEXT = {
+    reviews: { en: "reviews on Google", de: "Bewertungen auf Google", it: "recensioni su Google", es: "reseñas en Google" },
+    more: { en: "Read more", de: "Weiterlesen", it: "Leggi tutto", es: "Leer más" }
+  };
+  var reviewsStarted = false, mapsReady = null, reviewsCache = {};
+
+  function loadMaps() {
+    if (!mapsReady) {
+      mapsReady = new Promise(function (resolve, reject) {
+        window.rsvipMapsReady = resolve;
+        var s = document.createElement("script");
+        s.src = "https://maps.googleapis.com/maps/api/js?key=" + encodeURIComponent(GOOGLE_API_KEY) +
+          "&v=weekly&loading=async&callback=rsvipMapsReady";
+        s.async = true;
+        s.onerror = reject;
+        document.head.appendChild(s);
+      });
+    }
+    return mapsReady;
+  }
+
+  function renderReviews(place, lang) {
+    var reviews = (place.reviews || []).filter(function (r) { return r.text; });
+    if (!reviews.length) return;
+    var rating = place.rating || 0;
+    document.getElementById("rv-rating").textContent = rating.toFixed(1).replace(".", lang === "en" ? "." : ",");
+    document.getElementById("rv-stars").textContent = "★★★★★".slice(0, Math.round(rating)) + "☆☆☆☆☆".slice(0, 5 - Math.round(rating));
+    document.getElementById("rv-count").textContent = (place.userRatingCount || reviews.length) + " " + RV_TEXT.reviews[lang];
+    if (place.googleMapsURI) document.getElementById("rv-all").href = place.googleMapsURI;
+
+    var list = document.getElementById("rv-list");
+    list.textContent = "";
+    reviews.forEach(function (r) {
+      var item = document.createElement("article");
+      item.className = "review";
+      var stars = document.createElement("span");
+      stars.className = "stars";
+      stars.textContent = "★★★★★".slice(0, r.rating || 5);
+      stars.setAttribute("aria-label", (r.rating || 5) + "/5");
+      var quote = document.createElement("blockquote");
+      var full = r.text.trim(), short = full.length > 220 ? full.slice(0, 200).replace(/\s+\S*$/, "") + "…" : full;
+      quote.textContent = "“" + short + "”";
+      item.appendChild(stars);
+      item.appendChild(quote);
+      if (short !== full) {
+        var more = document.createElement("button");
+        more.type = "button";
+        more.className = "more";
+        more.textContent = RV_TEXT.more[lang];
+        more.addEventListener("click", function () { quote.textContent = "“" + full + "”"; more.remove(); });
+        item.appendChild(more);
+      }
+      var who = document.createElement("p");
+      who.className = "who";
+      var author = r.authorAttribution || {};
+      var name = document.createElement(author.uri ? "a" : "span");
+      name.textContent = author.displayName || "Google";
+      if (author.uri) { name.href = author.uri; name.rel = "noopener"; name.target = "_blank"; }
+      who.appendChild(name);
+      if (r.relativePublishTimeDescription) who.appendChild(document.createTextNode(" · " + r.relativePublishTimeDescription));
+      item.appendChild(who);
+      list.appendChild(item);
+    });
+    document.getElementById("resenas").hidden = false;
+  }
+
+  function loadReviews(lang) {
+    if (!GOOGLE_API_KEY) return;
+    if (reviewsCache[lang]) { renderReviews(reviewsCache[lang], lang); return; }
+    loadMaps().then(function () {
+      return google.maps.importLibrary("places");
+    }).then(function (lib) {
+      var place = new lib.Place({ id: GOOGLE_PLACE_ID, requestedLanguage: lang });
+      return place.fetchFields({ fields: ["rating", "userRatingCount", "reviews", "googleMapsURI"] }).then(function () { return place; });
+    }).then(function (place) {
+      reviewsCache[lang] = place;
+      if (document.documentElement.dataset.lang === lang) renderReviews(place, lang);
+    }).catch(function () { /* Si Google falla, la sección sigue oculta. */ });
+  }
+
+  // Se cargan cuando el visitante se acerca a esa parte de la página.
+  if (GOOGLE_API_KEY) {
+    var start = function () {
+      if (reviewsStarted) return;
+      reviewsStarted = true;
+      loadReviews(document.documentElement.dataset.lang);
+    };
+    var target = document.getElementById("barber");
+    if ("IntersectionObserver" in window) {
+      var io = new IntersectionObserver(function (entries) {
+        if (entries.some(function (e) { return e.isIntersecting; })) { io.disconnect(); start(); }
+      }, { rootMargin: "400px" });
+      io.observe(target);
+    } else {
+      start();
+    }
+  }
 </script>
 </body>
 </html>
